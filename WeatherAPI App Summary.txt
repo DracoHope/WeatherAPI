@@ -25,4 +25,5 @@ Summary of Section 3 - 010224
 6. Making HTTP request at <client-app> project using the React [useEffect()] function
 7. Add [CORS] service to <Program.cs> to solve the CORS error
 8. Applied Semantic React UI to the <client-app> 
+9. Using Axios package for HTTP call from client to database
 
