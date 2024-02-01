@@ -2,6 +2,13 @@ using Microsoft.EntityFrameworkCore;
 using Persistence;
 
 /*
+    Command to restart this <API> app
+    dotnet watch  => this is prefer for now
+    or
+    dotnet watch --no-hot-reload   => prefer during coding
+*/
+
+/*
     Starting Application Command
     1. dotnet watch => This command uses the "Hot Reload" to monitor any changes of any files and apply those changes. But it is not always the case as in Dotnet v7.0
     2.dotnet watch --no-hot-reload => Instead we be using this command to apply the "File Watcher" which is more rliable  then the "Hot Reload"
@@ -83,6 +90,21 @@ builder.Services.AddDbContext<DataContext>(opt => {
     opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
+/*
+    Add the CORS Policy as a service
+    Basically we added a service to the API project to tell the <API> that don't care about CORS Header and Method as long as the HTTP request comes from  WithOrigins("http://localhost:3000/");
+
+    Beside adding this CORS Policy service here. We still need the Middleware to support this CORS Policy.
+
+    The order to add the Middleware for this CORS Policy is important. We need to add it just before the <app.UseAuthorization()> below 
+*/
+builder.Services.AddCors(opt => {
+    opt.AddPolicy("CorsPolicy", policy => 
+    {
+        policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:3000");
+    });
+});
+
 // Building this API project app
 var app = builder.Build();
 
@@ -114,6 +136,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+/*
+    We must add the Middleware for the CORS Policy just before the <app.UseAuthorization();>
+    The order of this Middleware is very important
+*/
+app.UseCors("CorsPolicy");
 
 // Not using this middleware for this API project
 // app.UseHttpsRedirection();

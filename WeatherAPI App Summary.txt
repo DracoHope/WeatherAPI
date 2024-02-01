@@ -1,0 +1,28 @@
+Summary of Section 2 - 310124
+1. Create client React App using Vite in Typescript platform
+2. Create React App with default projects folder
+   API, Domain and Persistence
+3. Install SQLite package in VS code
+4. Create SQLite Database in <Persistence> project folder
+5. Setup database connection string in <Persistence> project
+6. Using [Swagger] for testing of SQLite Database
+7. Using Postman for testing of Database
+8. Start and execute the <API> project to retrieve data from database
+
+Main objective: 
+1. To create React app using Vite 
+2. Install and setup SQLite in the <Persistence> project folder 
+3. Create the SQLite database schema in <Persistence> project folder 
+4. Creation and Migration of SQLite database using the Entity Framework Core .NET <dotnet ef>
+4. Create the HTTP Get Request route for database request
+
+Summary of Section 3 - 010224
+1. Create client React App using Vite in Typescript platform
+2. Introduction of Typescript and demostrarion
+3. Demostration of React Hook [useState] passing state data from parent component to child component with Typescript 
+4. Create a <client-app> project to display data from database
+5. Using Semantic React UI for styling
+6. Making HTTP request at <client-app> project using the React [useEffect()] function
+7. Add [CORS] service to <Program.cs> to solve the CORS error
+8. Applied Semantic React UI to the <client-app> 
+
