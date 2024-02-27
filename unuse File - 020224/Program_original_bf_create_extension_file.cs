@@ -1,4 +1,3 @@
-using API.Extensions;
 using Application.Activities;
 using Application.Core;
 using Microsoft.EntityFrameworkCore;
@@ -51,25 +50,9 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
-
-/*
-    We have transfer some of the Services to the 
-    <API/Extension/ApplicationServiceExtensions.cs> class
-    This is to centralize the Services in one common file for easy management
-
-    We will now can import those Services from<API/Extension/ApplicationServiceExtensions.cs> class
-
-    Whenever there are new Services require then we will add those new Services into the <ApplicationServiceExtensions.cs>  class
-*/
-builder.Services.AddApplicationServices(builder.Configuration);
-
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-
-// Transfer all Services to the <API/Extension/ApplicationServiceExtensions.cs> class
-/*
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-*/
 /*
     *** Add the <DbContect> Srrvice to the Application
 
@@ -105,13 +88,9 @@ builder.Services.AddSwaggerGen();
     "DefaultConnection" => is the variable name we define here as a service for the database connection string
     "Data Source=weatherapi.db" => this is the actual SQLite database connection string. SQLite store data in the form of a file with an extension ".db". We declare a file name <weatherapi.db> for this SQLite database
 */
-
-// // Transfer all Services to the <API/Extension/ApplicationServiceExtensions.cs> class
-/*
 builder.Services.AddDbContext<DataContext>(opt => {
     opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
-*/
 
 /*
     Add the CORS Policy as a service
@@ -121,15 +100,13 @@ builder.Services.AddDbContext<DataContext>(opt => {
 
     The order to add the Middleware for this CORS Policy is important. We need to add it just before the <app.UseAuthorization()> below 
 */
-// // Transfer all Services to the <API/Extension/ApplicationServiceExtensions.cs> class
-/*
 builder.Services.AddCors(opt => {
     opt.AddPolicy("CorsPolicy", policy => 
     {
         policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:3000");
     });
 });
-*/
+
 
 /*
     ** Code changes at Section 4 - 020224 **
@@ -142,19 +119,13 @@ builder.Services.AddCors(opt => {
 
     The eMediator just need to know where to find the Query Handler. Therefore need to pass in the 
 */
-
-// Transfer all Services to the <API/Extension/ApplicationServiceExtensions.cs> class
-/*
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(typeof(QueryHandler.Handler).Assembly));
-*/
 
 /*
     Adding Auto Mapper as a service to the program.c for the project
 */
-// Transfer all Services to the <API/Extension/ApplicationServiceExtensions.cs> class
-/*
 builder.Services.AddAutoMapper(typeof(MappingProfiles).Assembly);
-*/
+
 
 
 // Building this API project app
