@@ -117,6 +117,7 @@ namespace Application.Activities
                 try
                 {
                     /*
+                        Section 4 - 270224
                         ThrowIfCancellationRequested() method will be executed when the user close the broswer or the request is suddenly cancel for any reason.
                         Wheneven the request is cancel for any reason, the Try catch will throw an Exception
                         Application\Activities\QueryHandler.cs
