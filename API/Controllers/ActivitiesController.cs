@@ -82,7 +82,7 @@ namespace API.Controllers
         // This <GetActivities()> method will return a List of Activities
         // public async Task <ActionResult<List<Activity>>> GetActivities(){
         /*
-            End of Section 4 - 270224
+            End of Section 4 - 270224 - Passing in CancellationToken into Mediator  
             At section 4, passing the CancellationToken cancellationToken to this HTTP Get Method
          */
         public async Task <ActionResult<List<Activity>>> GetActivities(CancellationToken ct){
