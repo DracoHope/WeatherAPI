@@ -81,7 +81,10 @@ namespace API.Controllers
         // Follow by Async method for the HTTP request
         // This <GetActivities()> method will return a List of Activities
         // public async Task <ActionResult<List<Activity>>> GetActivities(){
-        // At section 4, passing the CancellationToken cancellationToken to this HTTP Get Method
+        /*
+            End of Section 4 - 270224
+            At section 4, passing the CancellationToken cancellationToken to this HTTP Get Method
+         */
         public async Task <ActionResult<List<Activity>>> GetActivities(CancellationToken ct){
             /*
                 this former command is for direct access to the Dtabase which is no longer in use at Section 4
